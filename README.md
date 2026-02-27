@@ -1,95 +1,165 @@
-# 💰 Fluxos AI
+# Fluxos AI
 
-Assistente inteligente para análise de fluxo de caixa com IA local (Ollama)  
-Projeto desenvolvido para o Bootcamp GenAI & Dados – Bradesco
+![Banner](assets/banner_fluxosai.png)
 
-## 🚀 Visão Geral
+> Assistente inteligente de análise de fluxo de caixa com IA local (Ollama/Llama3).  
+> Projeto desenvolvido no **Bootcamp GenAI & Dados – Bradesco**.
 
-O Fluxos AI é uma aplicação web desenvolvida com Streamlit que permite:  
-📂 Upload de arquivo CSV financeiro  
-📊 Análise automática de entradas, saídas e saldo  
-📈 Visualização gráfica por categoria  
-🤖 Interpretação inteligente de perguntas usando LLM (Ollama)  
-🧠 Respostas baseadas exclusivamente nos dados enviados  
+---
 
-A aplicação utiliza um modelo local via Ollama (Llama3), eliminando custos com API externa e problemas de cota.
+## 📌 Sobre o Projeto
 
-## 🏗️ Arquitetura do Projeto
+O **Fluxos AI** é uma aplicação web construída com **Streamlit** que permite ao usuário fazer upload de um arquivo CSV financeiro e obter análises automáticas, visualizações gráficas e respostas inteligentes baseadas nos próprios dados — tudo isso usando um modelo de linguagem local via **Ollama**, sem custos de API externa.
 
-<img width="487" height="734" alt="image" src="https://github.com/user-attachments/assets/36ee85ba-bb0f-4aea-889c-af89165f2533" />
+---
 
+## ✨ Funcionalidades
 
+- 📂 Upload de arquivo CSV financeiro
+- 📊 Cálculo automático de entradas, saídas e saldo
+- 📈 Visualização gráfica por categoria (gráfico de barras interativo)
+- 🤖 Assistente com IA para responder perguntas sobre os dados
+- 🔒 Processamento 100% local — nenhum dado sai da sua máquina
 
-## 🧠 Como Funciona
+---
 
-O usuário envia um CSV com colunas como:  
-data, tipo (entrada/saida), categoria, valor  
+## 💬 Perguntas Suportadas pelo Assistente
 
-O sistema:  
-- Processa os dados  
-- Calcula métricas financeiras  
-- Gera gráficos interativos  
-- Monta um contexto estruturado  
+- Qual é o meu saldo?
+- Qual categoria teve maior saída?
+- Qual categoria teve maior entrada?
+- Quanto gastei com logística?
+- Qual foi minha maior despesa?
 
-A LLM:  
-- Interpreta a intenção da pergunta  
-- Consulta o contexto  
-- Retorna resposta baseada nos dados
+---
 
-## 🛠️ Tecnologias Utilizadas
+## 📁 Estrutura do Projeto
 
-Python 3.11+, Streamlit, Plotly, Pandas, Ollama, Llama3
+```
+fluxos-ai/
+├── app/
+│   └── streamlit_app.py       # Interface principal (Streamlit)
+├── core/
+│   └── financial_analyzer.py  # Processamento e análise do CSV
+├── data/
+│   └── fluxo_caixa_teste.csv  # Arquivo de exemplo para testes
+├── docs/                       # Documentação técnica
+├── services/
+│   ├── llm_service.py         # Integração com Ollama
+│   └── report_generator.py    # Geração de relatório financeiro
+├── assets/
+│   └── banner.png             # Banner do projeto
+├── .gitignore
+├── requirements.txt
+└── README.md
+```
 
-## ⚙️ Instalação
+---
 
-1️⃣ Clone o repositório  
-`git clone https://github.com/jeduardo-bahia/fluxos-ai.git`  
-`cd fluxos-ai`  
+## 🛠️ Tecnologias
 
-2️⃣ Crie o ambiente virtual  
-`python -m venv venv`  
-`venv\Scripts\activate  # Windows`  
+| Tecnologia | Uso |
+|---|---|
+| Python 3.11+ | Linguagem principal |
+| Streamlit | Interface web |
+| Pandas | Processamento de dados |
+| Plotly | Visualização gráfica |
+| Ollama + Llama3 | Modelo de linguagem local |
+| Requests | Comunicação com a API do Ollama |
 
-3️⃣ Instale as dependências  
-`pip install -r requirements.txt`  
+---
 
-Caso não tenha requirements.txt, instale manualmente:  
-`pip install streamlit pandas plotly ollama`  
+## ▶️ Como Executar
 
-4️⃣ Instale o Ollama  
-Baixe em: https://ollama.com  
-Depois rode:  
-`ollama pull llama3`  
+**1. Clone o repositório**
+```bash
+git clone https://github.com/jeduardo-bahia/fluxos-ai.git
+cd fluxos-ai
+```
 
-5️⃣ Execute o projeto  
-`streamlit run app/streamlit_app.py`
+**2. Crie e ative o ambiente virtual**
+```bash
+python -m venv venv
 
-## 📊 Exemplo de Uso
+# Windows
+venv\Scripts\activate
 
-Perguntas que podem ser feitas:  
-- Qual meu saldo?  
-- Qual categoria teve maior saída?  
-- Qual categoria teve maior entrada?  
-- Quanto gastei com logística?  
-- Qual foi minha maior despesa?  
+# Linux/Mac
+source venv/bin/activate
+```
 
-## 🎯 Diferenciais
+**3. Instale as dependências**
+```bash
+pip install -r requirements.txt
+```
 
-✔ Uso de LLM local (sem custo de API)  
-✔ Análise contextual baseada em dados reais  
-✔ Interface profissional  
-✔ Estrutura modular e escalável  
-✔ Separação clara entre Core, Services e App  
+**4. Instale o Ollama e baixe o modelo**
 
-## 📈 Possíveis Evoluções
+Acesse [https://ollama.com](https://ollama.com), instale e execute:
+```bash
+ollama pull llama3
+```
 
-Exportação de relatórios PDF, Deploy em nuvem, Autenticação de usuários, Dashboard executivo, Banco de dados persistente, Fine-tuning de prompts, Implementação de RAG completo
+**5. Execute a aplicação**
+```bash
+streamlit run app/streamlit_app.py
+```
 
-## 👑 Autor
+> ⚠️ Certifique-se de usar `streamlit run` e não `python streamlit_app.py` diretamente.
 
-Desenvolvido por Jhonanthan Bahia  
+---
+
+## 📦 Dependências
+
+```txt
+streamlit
+pandas
+plotly
+requests
+ollama
+```
+
+> Ou instale tudo de uma vez: `pip install -r requirements.txt`
+
+---
+
+## 🎯 Arquitetura
+
+```
+CSV Upload
+    ↓
+FinancialAnalyzer  →  Métricas + Gráficos
+    ↓
+Contexto Estruturado
+    ↓
+LLMService (Ollama/Llama3)
+    ↓
+Resposta ao Usuário
+```
+
+O usuário envia um CSV → o sistema processa e calcula métricas → monta um contexto estruturado → a LLM interpreta a pergunta e responde com base exclusivamente nos dados fornecidos.
+
+---
+
+## 🚀 Possíveis Evoluções
+
+- [ ] Exportação de relatórios em PDF
+- [ ] Deploy em nuvem (Streamlit Cloud / Railway)
+- [ ] Autenticação de usuários
+- [ ] Dashboard executivo
+- [ ] Banco de dados persistente
+- [ ] Implementação de RAG completo
+- [ ] Fine-tuning de prompts
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Jhonanthan Bahia**  
 Bootcamp GenAI & Dados – Bradesco
 
-## 📜 Licença
+---
 
-Projeto para fins educacionais e demonstração técnica
+## 📄 Licença
+
+Projeto desenvolvido para fins educacionais e demonstração técnica.
